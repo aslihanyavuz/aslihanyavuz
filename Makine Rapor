@@ -1,0 +1,434 @@
+PERCEPTRON NEDİR ÇALIŞMA MANTIĞI NASILDIR?
+PERCEPTRON NEDİR?
+Makine öğrenmesinde, perceptron, ikili sınıflandırıcıların denetimli öğrenimi için bir algoritmadır (sayıların bir vektörü ile temsil edilen bir girdinin, belirli bir sınıfa ait olup olmadığına karar verebilen işlevler).  Bu, bir doğrusal sınıflayıcıdır, yani, kendi tahminlerini, özellik vektörü ile bir ağırlık setini birleştiren bir doğrusal belirleyici fonksiyona dayanan bir sınıflandırma algoritmasıdır. Algoritma, çevrimiçi öğrenme için izin verir, çünkü eğitim setindeki öğeleri bir seferde işler. Tek katmanlı bir işlem ünitesidir. Sadece girdi ve çıktı katmalarından oluşmaktadır. Çıktı üniteleri bütün girdi ünitelerine bağlanmaktadır ve her bağlantının bir ağırlığı vardır. En basit tek katmanlı sinir ağı modeli perceptron’dur.
+PERCEPTRON TARİHÇESİ
+Perceptron algoritması 1950'lerin sonlarına kadar uzanır. İlk uygulaması, özel donanımda, üretilecek ilk yapay sinir ağlarından biriydi.
+Perceptron algoritması 1957'de Amerika Birleşik Devletleri Deniz Araştırmaları Ofisi tarafından finanse edilen Frank Rosenblatt tarafından Cornell Aeronautical Laboratory'de icat edilmiştir. Perceptron'un bir programdan ziyade bir makine olması amaçlanmıştı ve ilk uygulaması IBM 704'ün yazılımındayken, daha sonra “Mark 1 perceptron” olarak özel yapım donanımda uygulandı. Bu makine görüntü tanıma için tasarlanmıştır: "nöronlara" rastgele bağlı 400 fotosel dizisi vardı. Ağırlıklar potansiyometrelerde kodlanmıştır ve öğrenme sırasında ağırlık güncellemeleri elektrik motorları tarafından yapılmıştır. 
+Perceptron, biyolojik bir nöronun basitleştirilmiş bir modelidir. Biyolojik nöron modellerinin karmaşıklığı, nöral davranışları tam olarak anlamak için sıklıkla gerekli olsa da , araştırma, bir algılayıcı-benzeri lineer modelin, gerçek nöronlarda görülen bazı davranışları üretebileceğini düşündürmektedir.
+Rosenblatt, biyolojik sinir ağlarındaki bağlantıların tesadüfi olarak oluştuklarını ileri sürmüştür. Bunun sonucu olarak da McCulloch-Pitts Modelinin aksine en uygun aracın olasılık teorisi olacağını belirtmiştir. Tesadüfi olarak birbirine bağlanan ağların genel özelliklerinin tanımlanabilmesi için, perceptron öğrenme kuramını geliştirmiştir
+Tek katmanlı perceptron modeli 1969 yılına gelindiğinde rafa kaldırılmaya başlandı. Marvin Minsky ve Seymour Papert yaptıkları çalışmada (An Introduction to Computational Geometry) tek katmanlı perceptron’ların, basit problemler için geçerli iken, problemler zorlaştıkça çözümden uzaklaştıklarını gösterdiler.
+
+
+PERCEPTRON ÇALIŞMA MANTIĞI
+Perceptron çalışma mantığının amacı, pozitif girdileri ve negatif girdileri doğru sınıflandırabilen bir karar sınırı (çizgi) oluşturmaktır. Doğru sınır değerine ulaşılması için girdi ve çıktı verilerinin fazla olması gerekmektedir.
+
+Adım1: Ağa, girdi seti ve ona karşılık beklenen çıktı gösteriliyor(X,B).
+Adım2: Perceptrona gelen Net girdi.
+Adım3: Perceptron çıkışı.
+•	Ağın, beklenen çıkışı 0 iken Ağa girerken eşik gözetleme üzerinde ise ağırlık değerleri azaltılmaktadır.
+•	Ağın, beklenen çıkışı 1 iken Ağa girerken eşik bakışlar altında ise ağırlık değerleri arttırılmaktadır.
+4. Adım: Bütün girdi setindeki pencereler için doğru hamleler yapılıncaya kadar ilk üç adımdaki işlemler tekrarlanır.
+
+Perceptron Modeli’nin kullanılarak doğru bir sınıflandırma yapılabilmesi için öncelikle eşik değeri gereklidir. Eşik değeri problemden probleme göre değişebilmektedir. Eşik değeri sayesinde aktivasyon fonksiyon eğrisi yukarı veya aşağı kaydırılmaktadır. Böylece gerekli değerler arasındaki giriş eşlenebilir. Perceptron genellikle verilerin iki bölüme ayrılmasına olanak sağlar. Bu nedenle Doğrusal İkili Sınıflandırıcı olarak da adlandırılmaktadır
+
+
+
+PERCEPTRON ve VE(AND) KAPISI
+VE kapısı, diğer tüm durumlarda, her ikisi de 1 ve 0 ise, 1 olarak bir çıktı üretir. Bu nedenle, bir perceptron, VE Kapısı giriş setini iki sınıfa bölen bir ayırıcı veya bir karar çizgisi olarak kullanılabilir:
+1. Sınıf: Karar satırının altında yer alan 0 değerine sahip girişler.
+2. Sınıf: Karar çizgisi veya ayırıcının üzerinde bulunan 1 olarak çıktıya sahip girişler.
+
+Aşağıdaki şema, bir perceptron kullanarak VE Kapısı girişlerini sınıflandırma fikrini göstermektedir:
+ 
+
+Şimdiye kadar, giriş verisini iki sınıfa ayırmak için lineer bir algılayıcının kullanılıyor. Ancak, aslında verileri nasıl sınıflandırıyor?
+Matematiksel olarak, bir algılayıcıyı, ağırlıkların, girişlerin ve sapmaların(dikey sapma) bir fonksiyonu olarak gösterilebilir;
+ 
+
+Perceptron tarafından alınan her bir girdi, nihai çıktıyı elde etme katkısının miktarına göre ağırlıklandırılmıştır.
+Sapma(bias), karar satırını, girdileri iki sınıfa ayırmak için değiştirilmesine izin verir.
+
+Aktivasyon Fonksiyonları
+Daha önce tartışıldığı gibi, aktivasyon fonksiyonu aşağıdaki resimde gösterildiği gibi bir perceptronun çıkışına uygulanır:
+ 
+Önceki örnekte, VE Kapısı giriş setinde lineer sınıflandırma yapmak için relu aktivasyon fonksiyonu ile lineer bir perceptronun nasıl kullanılacağını gösterildi. Ancak, gerçekleştirmek istenilen sınıflandırma doğası gereği doğrusal değilse. Bu durumda, doğrusal olmayan aktivasyon fonksiyonlarından biri kullanılır. Belirgin doğrusal olmayan aktivasyon fonksiyonlarının bazıları aşağıda gösterilmiştir:
+ 
+TensorFlow kütüphanesi, aktivasyon fonksiyonlarını uygulamak için yerleşik fonksiyonlar sağlar. Yukarıda belirtilen aktivasyon fonksiyonları ile ilgili yerleşik fonksiyonlar aşağıda listelenmiştir:
+tf.sigmoid (x, name= None) :X element-wise sigmoidini hesaplar.
+Bir x elemanı için sigmoid – y = 1 / (1 + exp (-x)) olarak hesaplanır.
+tf.nn.relu (features, Name = None):Doğrultulmuş doğrusal değerleri hesaplar(özellikler, 0).
+tf.tanh (x, name = None):X elemanının hiperbolik tanjantını hesaplar.
+
+
+Tek Katmanlı Perceptron Kullanarak SONAR Veri Sınıflandırması
+Bu kullanım durumunda, bir metal silindirin (deniz madeni) sonar sinyallerinin sıçraması ve çeşitli açılarda ve çeşitli koşullar altında bir kaya tarafından elde edilen 208 deseni ile ilgili verileri içeren bir SONAR veri seti temin edilmiştir. Bir deniz madeni, yüzey gemilerini veya denizaltıları tahrip etmek veya yok etmek için suya yerleştirilmiş bağımsız bir patlayıcı aygıttır. Bu nedenle, amacımız, veri setimize dayanarak nesnenin bir deniz mayını mı yoksa kaya mı olduğunu tahmin edebilecek bir model oluşturmaktır. 
+
+
+
+SONAR veri seti
+ 
+
+
+Burada, genel temel prosedür herhangi bir karışıklığı önlemek için tartışılacak olan birkaç farkla VE kapısınınki ile aynı olacaktır. Tek Katmanlı Perceptron kullanarak SONAR veri setinde lineer sınıflandırma yapılır.
+
+
+Sonuç
+Perceptron Öğrenme Algoritması ile ilgili , bir algılayıcının ne olduğunu ve TensorFlow kütüphanesini kullanarak nasıl uygulanacağı gösterildi. Bir perceptronun lineer bir sınıflandırıcı olarak nasıl kullanılabileceğini ve bu gerçeği bir perceptron kullanarak VE Kapısını uygulamak için nasıl kullanabileceği gösterildi. Sonunda bir adım öne geçildi ve kaya(rock) ve mayın(mine) arasındaki farkı tespit etmek için SONAR veri setini sınıflandırıldığı gerçek zamanlı kullanım durumunu çözmek için perceptron uygulandı.
+
+DİĞER DEĞİŞKENLERİ:
+Cep algoritması (Gallant, 1990), şimdiye kadar "cebinde" görülen en iyi çözümü koruyarak, perceptron öğrenmenin kararlılık problemini çözmektedir. Cep algoritması daha sonra çözümü, son çözüm yerine, cebinde döndürür. Ayrıştırılabilir olmayan veri kümeleri için de kullanılabilir, burada amaç az sayıda yanlış sınıflandırma içeren bir algılayıcı bulmaktır. Bununla birlikte, bu çözümler tamamen stokastik bir biçimde ortaya çıkmaktadır ve bu nedenle, cep algoritması, ne zaman öğrenme aşamasında kademeli olarak yaklaşmakta ne de belirli bir sayıda öğrenme adımı içinde ortaya çıkmaları garanti edilmemektedir.
+Maxover algoritması (Wendemuth, 1995), veri kümesinin lineer ayrılabilirlik bilgisine (önceki) bakılmaksızın birleşeceği anlamında "sağlamdır". Doğrusal olarak ayrılabilir durumda, eğitim problemini çözecektir - eğer istenirse, optimal stabilite ile bile (sınıflar arası maksimum sınır). Ayrılamaz veri kümeleri için, az sayıda yanlış sınıflandırma içeren bir çözüm getirecektir. Her durumda, algoritma yavaş yavaş, önceki durumları ezberlemeksizin ve stokastik sıçramalar olmadan, öğrenme sırasında çözüme yaklaşır. Yakınsama, ayrılabilir veri kümeleri ve ayrıştırılamayan veri kümeleri için yerel optimizasyon için küresel optimalliktir.
+Oylu Perceptron (Freund ve Schapire, 1999), çoklu ağırlıklı algılayıcıları kullanan bir varyanttır. Algoritma, bir örnek yanlış bir şekilde sınıflandırıldığında her zaman yeni bir algılayıcıyı başlatır ve ağırlık vektörünü son algılayıcının son ağırlıklarıyla başlatır. Her bir algılayıcıya, yanlış bir şekilde sınıflandırılmadan önce doğru şekilde sınıflandırdıkları örneklere karşılık gelen bir başka ağırlık verilecek ve sonuçta çıktı tüm algılayıcı üzerinde ağırlıklı bir oylama olacaktır.
+Ayrılabilir problemlerde, perceptron eğitimi ayrıca sınıflar arasındaki en büyük ayırma payını bulmayı hedefleyebilir. Optimal stabilite olarak adlandırılan sözde koruma, Min-Over algoritması (Krauth ve Mezard, 1987)  veya AdaTron (Anlauf ve Biehl, 1989)) gibi yineleyici eğitim ve optimizasyon şemaları vasıtasıyla belirlenebilir.  AdaTron, karşılık gelen ikinci dereceden optimizasyon probleminin dışbükey olduğu gerçeğini kullanır. Optimal stabilite algısı, çekirdek numarasıyla birlikte, destek vektör makinesinin kavramsal temelleridir.
+
+
+YAPAY SİNİR AĞLARI VE ÇALIŞMA MEKANİZMALARI
+YAPAY SİNİR AĞI NEDİR?
+Yapay sinir ağları (YSA), insan beyninin özelliklerinden olan öğrenme yolu ile yeni bilgiler türetebilme, yeni bilgiler oluşturabilme ve keşfedebilme gibi yetenekleri, herhangi bir yardım almadan otomatik olarak gerçekleştirebilmek amacı ile geliştirilen bilgisayar sistemleridir.
+Yapay sinir ağları insan beyni örnek alınarak, öğrenme sürecinin matematiksel olarak modellenmesi sonucu ortaya çıkmıştır. Beyindeki biyolojik sinir ağlarının yapısını, öğrenme, hatırlama ve genelleme kabiliyetlerini taklit eder. Yapay sinir ağlarında öğrenme işlemi örnekler kullanılarak gerçekleştirilir. Öğrenme esnasında giriş çıkış bilgileri verilerek, kurallar koyulur.
+YAPAY SİNİR AĞLARI TARİHÇESİ
+İnsan beynini konu alan çalışmalar binlerce yıl öncesine dayanmaktadır. Elektroniğin gelişimi ile beraber bu karmaşık düşünce sistemini kullanabilmeyi hedefleyen çalışmalar hız  kazanmıştır. İlk yapay sinir ağı modeli 1943 yılında, Warren McCulloch isimli bir sinir hekimi ile Walter Pitts isimli bir matematikçi tarafından geliştirilmiştir. 1960 ile 1980 yıları arasında bilim dünyasında yaşanan bazı gelişmelerden dolayı yapay sinir ağları alanında çalışmaların durma noktasına geldiği bir duraklama dönemi yaşanmıştır. Ardından yapay sinir ağlarındaki bazı problemlerin giderilmesi ile beraber 1980 yılarının sonlarında dünya çapında yaşanan önemli gelişmeler ile birlikte yapay sinir ağları da gelişimine hız katarak devam etmiştir.
+Günümüzde yapay sinir ağları ile alakalı dünya çapında çeşitli araştırmalar yapılmaktadır. Yapay sinir ağlarını eğitmek uzun zaman gerektirdiğinden, araştırmalar özellikle bu probleme odaklanmıştır. Burada ki amaç daha verimli ve yeni öğrenme algoritmaları keşfetmektir. 1943 yılından günümüze kadar olan süreçte yaşanan gelişmelerde bu konu temel odak noktasıdır. Gelişen yapay sinir ağları yakın gelecekte, sistemlerin özellikle robotların günlük hayatta yaşam kalitesinin artırılmasına yönelik ne denli önemli bir etken olabileceklerine işaret etmektedir
+
+
+
+Sinir ağları neden önemlidir?
+Sinir ağları, bilgisayarların sınırlı insan desteğiyle akıllı kararlar almasına yardımcı olur. Bunun nedeni, doğrusal olmayan ve karmaşık girdi ve çıktı verileri arasındaki ilişkileri öğrenip modelleyebilmeleridir. Örneğin, sinir ağları aşağıdaki görevleri gerçekleştirebilir.
+Genelleme ve çıkarım yapma
+Sinir ağları, yapılandırılmamış verileri kavrayabilir ve özel eğitim olmadan genel gözlemler yapabilir. Örneğin, iki farklı girdi cümlesinin benzer anlama sahip olduğunu anlayabilirler:
+•	Nasıl ödeme yapacağımı söyleyebilir misin?
+•	Nasıl para transferi yaparım?
+Bir sinir ağı, her iki cümlenin de aynı anlama geldiğini bilecektir. Ya da, daha kapsamlı olarak Baxter Road'un bir yer adı, Baxter Smith'in ise bir kişi adı olduğunu anlayabilir.
+
+
+
+YAPAY SİNİR AĞLARININ AVANTAJLARI:
+	Yapay Sinir Ağları birçok hücreden meydana gelir ve bu hücreler eş zamanlı çalışarak karmaşık işleri gerçekleştirir.
+	Öğrenme kabiliyeti vardır ve farklı öğrenme algoritmalarıyla öğrenebilirler.
+	Görülmemiş çıktılar için sonuç (bilgi) üretebilirler. Gözetimsiz öğrenim söz konusudur.
+	Örüntü tanıma ve sınıflandırma yapabilirler. Eksik örüntüleri tamamlayabilirler.
+	Hata toleransına sahiptirler. Eksik veya belirsiz bilgiyle çalışabilirler. Hatalı durumlarda dereceli bozulma (graceful degradation) gösterirler.
+	Paralel çalışabilmekte ve gerçek zamanlı bilgiyi işleyebilmektedirler.
+
+
+YAPAY SİNİR AĞLARININ DEZAVANTAJLARI:
+
+	‘Kara Kutu’, verdiği sonucun açıklamasını yapamaz.
+	Uygun ağ yapısının belirlenmesinde belli bir kural yoktur.
+	Ağın parametre değerlerinin belirlenmesinde belli bir kural yoktur.
+	Eğitim örnekleri seçiminde genel bir kural yoktur.
+	Öğrenilecek problemin ağa gösterimi önemli bir problemdir.
+	Ağın eğitiminin ne zaman bitirilmesi gerektiğine ilişkin belli bir yöntem yoktur.
+
+
+YAPAY SİNİR AĞLARININ KULLANIM ALANLARI:
+Yapay sinir ağları başlıca teşhis, sınıflandırma, tahmin, kontrol, veri ilişkilendirme, veri filtreleme, yorumlama gibi alanlarda kullanılmaktadır. Hangi problem için hangi ağın daha uygun olduğunu belirlemek için ağların özellikleri ile problemlerin özelliklerini karşılaştırmak gerekir.
+•	Hesaplamalı Finans(Computational finance): Kredi skorlaması(credit scoring), Algoritmik Ticaret(algorithmic trading)
+•	Görüntü işleme ve bilgisayarla görü(image processing and computer vision): Yüz tanıma(face recognition), hareket tanıma(motion detection), nesne tanıma(object detection)
+•	Hesaplamalı biyoloji(Computational biology): Tümör bulma(tumor detection), İlaç keşfi(durg discovery), DNA dizilimi(DNA seqencing)
+•	Enerji üretimi (Energy production): Fiyat ve yük tahmini (price and load forecasting)
+•	Otomotiv, havacılık ve üretim (Automotive, aerospace and manufacturing): Öngörücü bakım (predictive maintenance)
+•	Doğal dil işleme(Natural language processing ): Sesli Asistan(voice assistant), Duygu analizi(emotion analysis)
+
+
+
+Sinir ağları ne için kullanılır?
+Sinir ağlarının pek çok sektörde aşağıdaki gibi çeşitli kullanım örnekleri vardır:
+•	Tıbbi görüntü sınıflandırması yoluyla tıbbi tanılama
+•	Sosyal ağ filtreleme ve davranışsal veri analizi aracılığıyla hedeflenen pazarlama
+•	Finansal araçların geçmiş verilerini işleyerek finansal tahminlerde bulunma
+•	Elektrik yükü ve enerji talebi tahmini
+•	Süreç ve kalite kontrolü
+•	Kimyasal bileşik tanımlama
+Sinir ağlarının dört önemli uygulama alanını aşağıda bulabilirsiniz.
+Görüntü işleme
+Görüntü işleme, bilgisayarların görüntü ve videolardan bilgi ve öngörü ayıklama yeteneğidir. Bilgisayarlar, sinir ağları sayesinde insanlara benzeyen görüntüleri ayırt edebilir ve tanıyabilir. Görüntü işlemenin aşağıdakiler gibi çeşitli uygulama alanları vardır:
+•	Yol işaretlerini ve yoldaki diğer kullanıcıları tanıyabilmek için otonom otomobillerde görüntü tanıma
+•	Güvenli olmayan veya uygunsuz içerikleri görüntü ve video arşivlerinden otomatik olarak çıkarmak için içerik denetimi
+•	Yüzleri tanımak ve gözlerin açık olması, gözlük ve sakal gibi özellikleri ayırt etmek için yüz tanıması
+•	Marka logolarını, giysi, güvenlik ekipmanı ve diğer görüntü ayrıntılarını tanımlamak için görüntü etiketleme
+Konuşma tanıma
+Sinir ağları, değişen konuşma kalıplarına, ses perdesine, tonuna, dile ve aksana rağmen insan konuşmasını analiz edebilir. Amazon Alexa gibi sanal asistanlar ve otomatik deşifre yazılımları, şu gibi işlemleri gerçekleştirmek için konuşma tanıma özelliğinden yararlanır:
+•	Çağrı merkezi temsilcilerine yardımcı olma ve çağrıları otomatik olarak sınıflandırma
+•	Klinik görüşmeleri gerçek zamanlı olarak belgelere dönüştürme
+•	İçerik kapsamını genişletmek için videolara ve toplantı kayıtlarına düzgün şekilde altyazı ekleme
+Doğal dil işleme
+Doğal dil işleme (NLP), insanlar tarafından oluşturulmuş doğal bir metni işleme becerisidir. Sinir ağları, bilgisayarların metin verilerinde ve belgelerdeki öngörüleri ve anlamı çıkarmasına yardımcı olur. NLP, şu işlevler dahil olmak üzere çeşitli kullanım örneklerine sahiptir:
+•	Otomatik sanal temsilciler ve chatbot'lar
+•	Yazılı verilerin otomatik olarak düzenlenmesi ve sınıflandırılması
+•	E-posta ve form gibi uzun belgelerin iş zekası analizi
+•	Sosyal medyadaki olumlu ve olumsuz yorumlar gibi duyguları belirten anahtar ifadeleri dizine ekleme
+•	Belge özeti çıkarma ve belirli bir konuda makale oluşturma
+
+Öneri altyapıları
+Sinir ağları, kullanıcı faaliyetlerini izleyerek kişiselleştirilmiş öneriler geliştirebilir. Ayrıca, tüm kullanıcı davranışlarını analiz ederek belirli bir kullanıcının ilgisini çekebilecek yeni ürün veya hizmetleri keşfedebilir. Örneğin, Philadelphia merkezli bir startup olan Curalate, markaların sosyal medya gönderilerini satışlara dönüştürmesine yardımcı oluyor. Markalar, Curalate'in akıllı ürün etiketleme (IPT) hizmetini kullanarak kullanıcılar tarafından oluşturulan sosyal içeriklerin toplanmasını ve derlenmesini otomatik hale getiriyor. IPT, kullanıcının sosyal medya hareketleriyle alakalı ürünleri otomatik olarak bulmak ve önermek için sinir ağlarından yararlanır. Tüketicilerin, bir sosyal medya görüntüsündeki belirli bir ürünü bulmak için çevrimiçi kataloglarda ava çıkmasına gerek kalmaz. Bunun yerine, Curalate'in otomatik ürün etiketleme hizmetini kullanarak ürünleri kolayca satın alabilirler.
+
+
+Sinir ağları nasıl çalışır?
+Sinir ağı mimarisinin ilham kaynağı, insan beynidir. Nöron adı verilen insan beyni hücreleri, karmaşık ve yüksek oranda birbirine bağlı bir ağ oluşturarak birbirine elektrik sinyalleri gönderir ve böylece insanların bilgileri işlemesine yardımcı olur. Benzer şekilde, yapay bir sinir ağı, bir sorunu çözmek için birlikte çalışan yapay nöronlardan meydana gelir. Yapay nöronlar, düğüm adı verilen yazılım modülleridir ve yapay sinir ağları, özünde matematiksel hesaplamaları çözmek için bilgi işlem sistemlerini kullanan yazılım programları veya algoritmalarıdır.
+Basit sinir ağı mimarisi
+Temel bir sinir ağı, üç katmanda birbirine bağlı yapay nöronlara sahiptir:
+Girdi Katmanı
+Dış dünyadaki bilgiler yapay sinir ağına girdi katmanından girer. Girdi düğümleri, verileri işler, analiz eder veya sınıflandırır ve ardından bir sonraki katmana aktarır.
+Gizli Katman
+Gizli katmanlar, girdilerini girdi katmanından ya da diğer gizli katmanlardan alır. Yapay sinir ağlarında çok sayıda gizli katman bulunabilir. Her bir gizli katman, bir önceki katmandaki çıktıları analiz eder, daha ayrıntılı şekilde işler ve bir sonraki katmana aktarır.
+Çıktı Katmanı
+Çıktı katmanı, yapay sinir ağı tarafından işlenen tüm verilerin nihai sonucunu verir. Bu katman, bir veya daha fazla düğüme sahip olabilir. Örneğin, ikili (evet/hayır) bir sınıflandırma problemimiz varsa çıktı katmanı, sonucu 1 veya 0 olarak verecek tek bir çıktı düğümüne sahip olur. Bununla birlikte, çoklu bir sınıflandırma problemimiz olduğunda çıktı katmanı, birden fazla çıktı düğümünden oluşabilir.
+
+Derin sinir ağı mimarisi
+Derin sinir ağları veya derin öğrenme ağları, birbirine bağlı milyonlarca yapay nöronun yer aldığı birçok gizli katmana sahiptir. Ağırlık adı verilen bir sayı, bir düğüm ile diğeri arasındaki bağlantıları temsil eder. Ağırlık, bir düğüm diğerini uyarıyorsa pozitif, bir düğüm diğerini bastırıyorsa negatif bir sayıdır. Yüksek ağırlık değerine sahip düğümler, diğer düğümler üzerinde daha yüksek etkiye sahiptir.
+Teorik olarak, derin sinir ağları herhangi bir girdi türünü herhangi bir çıktı türüyle eşleştirebilir. Bununla birlikte, diğer makine öğrenimi yöntemlerine kıyasla çok daha fazla eğitime ihtiyaç duyarlar. Daha basit bir ağın ihtiyaç duyabileceği yüzlerce veya binlerce eğitim verisi örneğine kıyasla, milyonlarca örneğe ihtiyaç duyarlar.
+
+
+ 
+
+Sinir ağlarının türleri nelerdir?
+Yapay sinir ağları, verilerin girdi düğümünden çıktı düğümüne nasıl aktığına bağlı olarak sınıflandırılabilir. Aşağıda birkaç örnek verilmiştir:
+Beslemeli sinir ağları
+Beslemeli sinir ağları, verileri girdi düğümünden çıktı düğümüne olmak üzere tek yönde işler. Bir katmandaki her düğüm, bir sonraki katmandaki her bir düğüme bağlıdır. Beslemeli bir ağ, tahminleri zaman içinde iyileştirmek için bir geri bildirim sürecinden yararlanır.
+Geri yayılım algoritması
+Yapay sinir ağları, tahmine dayalı analizlerini geliştirmek için düzeltici geri bildirim döngülerini kullanarak sürekli olarak öğrenir. Basitçe, sinir ağındaki pek çok farklı yolda girdi düğümünden çıktı düğümüne akan verileri düşünebilirsiniz. Girdi düğümünü, doğru çıktı düğümüyle eşleştiren yalnızca bir doğru yol vardır. Sinir ağı, bu yolu bulmak için aşağıdaki gibi çalışan bir geri bildirim döngüsü kullanır:
+1.	Her düğüm, yoldaki bir sonraki düğüm hakkında bir tahminde bulunur.
+2.	Tahminin doğru olup olmadığını kontrol eder. Düğümler, daha doğru tahminler sunan yollara daha yüksek ağırlık değerleri ve yanlış tahminler sunan düğüm yollarına daha düşük ağırlık değerleri tayin eder.
+3.	Düğümler, bir sonraki veri noktası için daha yüksek ağırlık değerine sahip yolları kullanarak yeni bir tahminde bulunur ve ardından 1. Adımı tekrarlar.
+Evrişimli sinir ağları
+Evrişimli sinir ağlarındaki gizli katmanlar, özetleme veya filtreleme gibi evrişim adı verilen belirli matematiksel işlevleri yerine getirir. Görüntü tanıma ve sınıflandırma için faydalı olan görüntülerden ilgili özellikleri ayıklayabildiklerinden, bunlar görüntü sınıflandırma konusunda oldukça faydalıdır. Yeni formun, iyi bir tahminde bulunmada kritik öneme sahip özellikleri kaybetmeden işlenmesi daha kolaydır. Her bir gizli katman; köşe, renk ve derinlik gibi farklı görüntü özelliklerini ayıklar ve işler.
+
+Sinir ağları nasıl eğitilir?
+Sinir ağı eğitimi, bir sinir ağına bir görevi nasıl yerine getireceğini öğretme sürecidir. Sinir ağları, ilk olarak birkaç etiketli veya etiketsiz büyük veri kümesini işleyerek öğrenir. Bu örnekleri kullanarak, bilinmeyen girdileri daha doğru şekilde işleyebilirler.
+Gözetimli öğrenme
+Gözetimli öğrenmede, veri bilimciler doğru yanıtı önceden sağlayan yapay sinir ağı etiketli veri kümeleri sunar. Örneğin, yüz tanımaya yönelik bir derin öğrenme ağı eğitiminde ilk olarak her bir görüntüyü tanımlayan etnik köken, ülke veya duygu gibi çeşitli terimlerle yüz binlerce insan yüzü görüntüsü işlenir.
+Sinir ağı, doğru yanıtı önceden sağlayan bu veri kümelerinden yavaş yavaş bilgi oluşturur. Ağ eğitildikten sonra, daha önce hiç işlemediği yeni bir insan yüzü görüntüsünün etnik kökeni veya duygusu hakkında tahminlerde bulunmaya başlar.
+Sinir ağları bağlamında derin öğrenme nedir?
+Yapay zeka, makinelere insan zekası gerektiren görevleri gerçekleştirme becerisi kazandırmaya ilişkin yöntemleri araştıran bilgisayar bilimi alanıdır. Makine öğrenimi, bilgisayarların çok büyük veri kümelerine erişmesini sağlayan ve bilgisayarlara bu verilerden bilgi edinmeyi öğreten bir yapay zeka tekniğidir. Makine öğrenimi yazılımı, mevcut verilerdeki modelleri bulur ve akıllı kararlar almak için bu modelleri yeni verilere uygular. Derin öğrenme, verileri işlemek için derin öğrenme ağlarını kullanan bir makine öğrenimi alt kümesidir.
+Makine öğrenimi ve derin öğrenme karşılaştırması
+Geleneksel makine öğrenimi yöntemleri, makine öğrenimi yazılımının yeterince iyi çalışması için insan girdisi gerektirir. Bir veri bilimcisi, yazılımın analiz etmesi gereken ilgili özellik kümesini manuel olarak belirler. Bu, yazılımın becerisini sınırlandırarak oluşturma ve yönetmeyi zahmetli hale getirir.
+Öte yandan, derin öğrenmede veri bilimcisi yazılıma yalnızca ham verileri verir. Derin öğrenme ağı, özellikleri kendi başına çıkarır ve daha bağımsız şekilde öğrenir. Metin belgeleri gibi yapılandırılmamış veri kümelerini analiz edebilir, hangi veri özelliklerine öncelik verileceğini belirleyebilir ve daha karmaşık problemleri çözebilir.
+Örneğin, bir makine öğrenimi yazılımını bir evcil hayvan görüntüsünü doğru şekilde tespit etmek üzere eğitiyorsanız şu adımları gerçekleştirmeniz gerekir:
+•	Kedi, köpek, at, hamster, papağan gibi binlerce evcil hayvan görüntüsünü manuel olarak bulup etiketleme.
+•	Eleme yönteminden yararlanarak görüntüyü tanımlayabilmesi için makine öğrenimi yazılımına hangi özellikleri araması gerektiğini söyleme. Örneğin, bu yazılım bacak sayısını hesaplayabilir ve ardından göz şekli, kulak şekli, kuyruk, kürk vb. özellikleri kontrol edebilir.
+•	Yazılımın doğruluğunu iyileştirmek için etiketli veri kümelerini manuel olarak değerlendirme ve değiştirme. Örneğin, eğitim kümenizde çok fazla siyah kedi resmi varsa yazılım siyah bir kediyi doğru şekilde tanımlarken beyaz bir kediyi tanımlayamaz.
+•	Bununla birlikte derin öğrenmede, sinir ağları tüm görüntüleri işleyerek hayvanı doğru şekilde tanımlamak için öncelikle bacak sayısı ve yüz şeklini analiz etmesi ve ardından son olarak kuyruğu incelemesi gerektiğini otomatik olarak belirler.
+
+YAPAY SİNİR AĞLARININ ÖZELLİKLERİ
+Yapay sinir ağları aşağıdaki temel özelliklere sahiptir:
+•	Doğrusal Olmama
+•	Paralel Çalışma
+•	Öğrenme
+•	Genelleme
+•	Hata Toleransı ve Esneklik
+•	Eksik Verilerle Çalışma
+•	Çok Sayıda Değişken ve Parametre Kullanma
+•	Uyarlanabilirlik
+
+
+YSA(Yapay Sinir Ağları) biyolojik sinir ağlarını taklit eden sentetik yapılardır.
+ 
+Biyolojik sinir hücresi ve yapay sinir ağı
+Yukarıda ki fotoğrafta biyolojik sinir hücresi ve yapay sinir ağı benzetilmiştir. Biyolojik Sinir sistemi elemanları ve yapay sinir sisteminde karşılıkları ise tabloda görülmektedir.
+
+ 
+
+Şekilde görüldüğü gibi bir hücreye n tane veri girişi yapılmaktadır (Xn veri girişi). Girilen veriler ağırlıklarla çarpılarak tüm veriler toplanır ve sonra önyargı eklenir bunun sonucunda net yargı elde edilir. Net girdi aktivasyon fonksiyonundan geçirilir ve bir veri çıktısı elde edilmiş olur.
+
+ 
+Yapay sinir hücresi
+
+Girişler: (x1, x2, ..., xn) : Giriş katmanındaki hücreler için, kullanıcı tarafından örnekler ile oluşturulmuş veri kümesidir. Diğer katmandaki hücreler için, herhangi bir katmandaki hücrenin çıkışı olabilir.
+Ağırlıklar: (w1j, w2j, ..., wnj) : Girişlerin, çıkışa ne oranda aktarılacağını gösterir. Örneğin w1 ağırlığı, x1 girişinin, çıkışa olan etkisini göstermektedir. Ağırlıkların büyük, küçük, pozitif ya da negatif olması, ilgili girişin önemli ya da önemsiz olduğunu göstermez. Ağırlıklar sabit ya da değişken değerler olabilir.
+Toplama Fonksiyonu: Bir hücrenin net girdisini hesaplamak için kullanılır. Bu amaç ile değişik fonksiyonlar kullanılmaktadır. En fazla tercih edilen, ağırlıklı toplam fonksiyonudur. Bu fonksiyonda her giriş kendi ağırlığı ile çarpılır ve bu değerler toplanır. Xi girişleri, wi ağırlıkları ve n hücrenin giriş sayısını göstermek üzere ağırlıklı toplam fonksiyonu;
+        şeklindedir.
+Yapay sinir ağındaki bütün hücrelerin toplama fonksiyonlarının aynı olması gerekmez. Her hücre bağımsız olarak farklı bir toplama fonksiyonuna sahip olabilir.
+
+ 
+Yapay sinir hücrelerinde kullanılan toplama fonksiyonları
+
+Aktivasyon Fonksiyonu: Hücrenin net girdi değerine karşılık üretilecek çıktı değerinin hesaplanmasında kullanılır. Çok katmanlı algılayıcılarda olduğu gibi, bazı sinir ağı modellerinde aktivasyon fonksiyonunun türevlenebilir olması şartı vardır.
+
+Çıkış (y): Aktivasyon fonksiyonu tarafından belirlenen değerdir. Üretilen çıktı, başka bir hücreye ya da dış dünyaya gönderilebilir. Geribesleme olması durumunda, hücre kendi üzerinde geribesleme yaparak, kendi çıktı değerini, giriş olarak kullanabilir. Bununla birlikte, geribesleme başka bir hücreye de yapılabilir. Ağ şeklinde gösterildiğinde, bir hücrenin, birden fazla çıkışı varmış gibi görünmektedir. Fakat bu durum sadece gösterim amaçlıdır. Bu çıkışların hepsi aynı değere sahiptir.
+
+
+YAPAY SİNİR AĞ MODELLERİ
+Yapay sinir ağı modelleri tek katmanlı algılayıcılar, çok katmanlı algılayıcılar, ileri beslemeli yapay sinir ağları ve geri beslemeli yapay sinir ağları olarak dört gurupta incelenebilir.
+
+ Tek Katmanlı Algılayıcılar
+Tek katmanlı ağlar sadece girdi ve çıktıdan oluşur. Tek katmanlı algılayıcılarda çıktı fonksiyonu doğrusaldır ve 1 veya -1 değerlerini almaktadır. Eğer çıktı 1 ise birinci sınıfa, -1 ise ikinci sınıfa kabul edilmektedir.
+ 
+Tek katmanlı algılayıcı modeli
+
+
+Çok Katmanlı Algılayıcılar
+Yapısal olarak doğrusal olmayan aktivasyon fonksiyonu olan birçok nöronun belli bir üstünlük içerisinde bağlandığı yapıya çok katmanlı algılayıcılar denir. Çok katmanlı algılayıcıların ortaya çıkmasında bazı yöntemlerin etkisiz kalmasının rolü vardır.
+
+ 
+Çok katmanlı algılayıcı modeli
+
+Adaline Modeli
+ Bernard Widrow, 1950’lerin sonlarında, Frank Rosenblatt’ın perceptronu geliştirdiği sırada, sinir ağları üzerine çalışmaya başlamıştır. 1960 yılında Widrow ve onun lisansüstü öğrencisi Marcian Hoff, ADALINE ağı ile En Küçük Kareler (Least Mean Square) algoritması olarak adlandırılan bir öğrenme kuralı geliştirdiler. Açık adı ’ADAptive LInear NEuron’ veya ’ADAptive LINear Element’ olan bu sinir hücresi modeli yapısal olarak algılayıcıdan farklı değildir. Ancak, algılayıcı aktivasyon fonksiyonu olarak eşik fonksiyonu kullanırken ADALINE doğrusal fonksiyon kullanır. Her iki modelde yalnızca doğrusal olarak ayrılabilen problemlere çözüm üretebilmektedir. Widrow-Hoff kuralı da denilen En Küçük Kareler algoritması, perceptronun öğrenme kuralından daha güçlüdür. Perceptron öğrenme kuralı bir çözüme yakınsamayı garanti etse dahi, eğitim kalıplarının sınır çizgisine yakınlığından dolayı gürültüye duyarlı olabilir. En küçük kareler algoritması, ortalama karesel hatayı minimize ettiğinden eğitim kalıplarını sınır çizgisinden olabildiğince uzak tutmaya çalışır. Widrow ve Hoff, birden fazla adaptif eleman içeren MADALINE yapay sinir ağı modellini de geliştirdiler.
+
+İleri Beslemeli Yapay Sinir Ağları
+İleri beslemeli yapay sinir ağlarında nöronlar girişten çıkışa doğru düzenli katmanlar şeklindedir. Bir katmandan sadece kendinden sonraki katmanlara bağ bulunmaktadır. Yapay sinir ağının girişine gelen bilgiler bir değişime uğratılmadan orta noktaya diğer bir deyişle gizli katmandaki hücrelere iletilir. Daha sonra sırasıyla çıkış katmanından işlenerek geçer ve dış ortama aktarılır. 
+ 
+İleri beslemeli ağ yapısı
+
+Geri Beslemeli Yapay Sinir Ağları
+ Geri beslemeli yapay sinir ağlarında ileri beslemeli ağlardan farklı olarak bir nöronun çıktısı sadece kendinden sonra gelen nöron katmanına girdi olarak verilmez. Kendinden önceki katmanda veya kendi katmanında bulunan herhangi bir nörona girdi olarak bağlanabilir. Bu yapısı ile geri beslemeli yapay sinir ağları doğrusal olmayan dinamik bir davranış göstermektedir. Geri besleme özelliğini kazandıran bağlantıların bağlanış şekline göre; aynı yapay sinir ağıyla farklı davranışta ve yapıda geri beslemeli yapay sinir ağları elde edilebilir.
+ 
+Geri beslemeli ağ yapısı
+
+
+
+
+Geri Yayılım Algoritması (BackPropagation)
+Geri yayılım algoritması, sinir ağının denetimli sınıfına giren genel bir algoritmadır. Daha öncede belirtildiği gibi girişlerle çıkışlar arasındaki hata sinyali bulunarak, ağırlıklar bu hata sinyaliyle güncellenmektedir. Hata yani e(t), arzu edilen çıkış t(t) ile sinir ağının çıkışı y(t) arasındaki farktır.
+e(t) = t(t) – y(k) ; t=1,..,m                                                     (2)
+Geri yayılım öğrenme algoritmasının temel yapısı, zincir kuralı kullanılarak, ağ üzerindeki tüm ağırlıklara E hata fonksiyonunun etkilerini yaymaktır. Böylelikle toplam hata değerini minimize etmektedir.
+E_Top= lim┬(t→∞)⁡((∑_(t=1)^t▒E^t )/t)                   (3)
+Herhangi bir ‘t’ denemesinde Et değeri küçültülebilirse sistemin hatasının azalacağı Eşitlik 3’te kolaylıkla gözlenmektedir. Sistem hatasındaki azalmayı temel olarak alarak ve bu azalmayı destekleyecek şekilde ağ üzerindeki ağırlık değerleri yeniden belirlenecek yöntemler kullanılmaktadır. Eğitme işlemi ve eğitimden sonraki test işlemi bu akışa göre yapılır. Bu algoritma ile xi. giriş için, i ve j kat işlem elemanları arasındaki ağırlıklardaki wji(t) değişikliği hesaplanır. Bu ifade,
+                                       (4)
+olarak verilir. Eşitlik 4’de η öğrenme katsayısı, α momentum katsayısı ve δj ara veya çıkış katındaki herhangi bir j nöronuna ait bir faktördür. Çıkış katı için bu faktör aşağıdaki şekilde verilir.
+                                    (5)
+Burada yj(t) ise j işlemci elemanının hedef çıkışıdır. Ara katlardaki (İşlem Elemanları – Nöronlar ) İşlem Elemanları (İE) için ise bu faktör,
+                                              (6)
+olarak verilir. Ara katlardaki İE’ler için herhangi bir hedef çıkış olmadığından, Eşitlik 5 yerine Eşitlik 6 kullanılır. Bu duruma bağlı olarak çıkış katından başlayarak δj faktörü, bütün katlardaki İE’ler için hesaplanır. Daha sonra Eşitlik 4’deki formüle bağlı olarak, bütün bağlantılar için ağırlıkların güncelleştirilmesi gerçekleştirilir. Geri yayılım algoritmasında kullanılacak aktivasyon fonksiyonu birkaç önemli karakteristiğe sahip olmalıdır. Aktivasyon fonksiyonu, sürekli, türevi alınabilir ve tekdüze bir şekilde azalmayan bir fonksiyon olmalıdır. Bu fonksiyonun türevinin kolay alınıyor olması tercih sebebidir. Genellikle, fonksiyonun minumum ve maksimum asimtotlar arasında uzanması beklenir 
+
+
+Yapay Sinir Ağları Temel Bileşenleri
+Yapay sinir ağları temel olarak iki bileşenden oluşur. Bunlar öğrenme algoritması ve aktivasyon fonksiyonudur. 
+Öğrenme Algoritması
+YSA'larının en önemli özelliklerinin başında veriyi kaynağından öğrenme gelir. Ağda ki veri biyolojik ağlarda sinaps dediğimiz YSA’da ise ağırlık diye adlandırdığımız uçlar da muhafaza edilir. Bu sebepten dolayı ağırlıkların önemi bir kat daha artmıştır. Tüm ağı ele alacak olursak ağırlıklar en uygun değeri alması gerekir. Aslında ifade edilmek  istenen şudur ki; ağırlıklar veriler arasında en uygun değeri bulmaya odaklanır. Bu da ağın eğitilmesi anlamına gelir.
+Aktivasyon Fonksiyonu
+ Aktivasyon fonksiyonunda yapay sinir hücresi girdi verileri üzerinde işlem yaparak buna karşılık gelen net çıktı sonuçları elde eder. Bu fonksiyon genelde doğrusallık göstermez. Fonksiyonun doğru seçilmesi önemlidir. Çünkü sonuç performansı etkileyecektir. Fonksiyon tek ve çift iki kutup halinde olabilir. Bazı aktivasyon fonksiyonları şunlardır; Parçalı doğrusal fonksiyon, Hiperbolik tanjant Aktivasyon fonksiyon, Adımsal aktivasyon fonksiyonu gibi.
+Sonuçlar
+Temel olarak bu teknoloji makinelerinde öğrenebildiğini ve bu öğrendiği bilgiyi en doğru şekilde kullanabildiğini ortaya koymaktadır. Bazı uygulamalarında ise öğrenmediği bilgi üzerine dahi yorumlamalar yaptığı gözlemlenmiştir. Bu durum yapay zekânın bir gün insan kontrolünden çıkabileceği tartışmalarını başlatmıştır. Bunun üzerine senaryolar bile yazılmıştır.
+
+Yapay Sinir Ağları Oluşturulmanın Adımları
+Yapay sinir ağı modeline verilmesi gereken bilgileri aşağıdaki şekilde sıralayabiliriz.
+•	Eğitimde ve testte kullanılacak girdi ve çıktı verileri,
+•	Ağdaki katmanlar,
+•	Katmanlardaki nöronların sayısı,
+•	Nöronların kullanacağı aktivasyon (transfer) fonksiyonları,
+•	Ağın amacına yaklaştığını ölçmek için kullanılacak amaç fonksiyonu (loss function),
+•	Değerleri ile iyileştirme yöntemini belirleyen optimizasyon algoritması.
+Sonuç:
+Günümüzde teknoloji ve bilim dünyasının ortaklaşa yaptığı çalışmalarla Yapay Zeka’nın kullanım alanları artış göstermektedir. Yapay zeka alanında yapılan araştırmaların amacı da, insan zekasına gereksinim duyulmayacak sistemlerin oluşturulmasıyla farklı bir çok karmaşık problemlerin çözümüne olanak tanımaktır. Bütün bu çalışmaların kapsamında gündemde olan bir diğer konu ise doğal zeka ile yapay zeka karşılaştırmasıdır. Doğal zeka için bilgi aktarımı yapay zekaya göre daha fazla zaman almakta ve işlemler daha zor olmaktadır. Bununla birlikte Büyük Veri ve İleri Analitik çalışmalarıyla verileri raporlama, belgelendirme ve sınıflandırma gibi analiz sonuçları makinelerde depolandığından daha kalıcı olmaktadır. Dolayısıyla Yapay Zeka akıllı veya zeki makineler yaratma hedefinde olan bilgisayar bilimlerinin alt alanlarından biridir. Yapay Zeka, askeri alanda hedef tespiti, endüstriyel alanda üretim, robotlar, bilgisayar oyunları, müşteri davranışları-eğilimleri, finans, güvenlik, tıp, uzay ve mühendislik konuları gibi bir çok alanda kullanılanmaktadır.
+Yapay Sinir Ağları Nasıl Çalışıyor?
+İnsan beyninin çalışma mekanizmasında öğrenme, hatırlama ve genelleme gibi işlemler uygulanır. Bu işlemleri beynimiz uygulayarak yeni bilgiler türetebilir. Yapay sinir ağları da insan beyninin bu çalışma yöntemlerini taklit ederek bu özellikleri robotlarda kullanmak için geliştirilmiştir. Sinir ağlarının çalışması için 3 katman bulunur. İlk katman girdi katmanı, ikinci katman gizli katman ve son olarak da çıktı katmanı bu sistem içerisinde bulunmaktadır. İlk katmana giren bilgiler gizli katmandaki bilgiler ile kıyaslanır ve ölçülür. Daha sonra ise bu bölgede analiz edilen bilgiler en uygun sonuca bağlanarak çıktı tabakasından çıkar.
+
+Bu kısmı şöyle özetleyebiliriz. Yazılımda kullanılan if, elif ve else komutları gibi çalışmaktadır. Fakat yazılımda bu komutların denk geldiği değerleri biz yazarken burada makine bu sistemi tamamen kendisi uygular. Diyelim makinemiz kırmızı ışık algıladı. Girdi tabakasında kırmızı ışık bilgisi gizli tabakaya yönlendiriliyor. Gizli tabaka kırmızı ışıkta ne yapılması gerektiğini analiz ediyor ve ortaya dur konutu çıkıyor. Durma işlemi daha sonra çıktı katmanına iletiliyor ve araba kırmızı ışıkta duruyor. Otonom araçlarda kullanılan bu sistem en basit örneklerden bir tanesidir.
+
+Yapay sinir ağları uygulamaları için bir örnek girdi oluşturmak yetebilir. Örneğin içerisine bazı çarpma işlemlerini atarak tüm çarpma işlemlerini yapmasını sağlayabilirsiniz. Bu işlem makinenin elindeki bilgilerden yola çıkarak yeni bilgiler öğrenmesine olanak tanıyor. Yüz tanıma, tahmin, sınıflandırma ya da optimizasyon gibi onlarca kullanım alanı olan YSA için henüz daha ilk aşamalardayız diyebiliriz. İlerleyen yıllarda yapay zeka, makine öğrenmesi ve derin öğrenme gibi teknolojilerin gelişmesi ile YSA ’da daha fazla gelişecek ve daha güçlü olarak karşımıza çıkabilecek. Bu yüzden bilim adamları tedbir alınmaz ise bu teknolojinin insanların sonunu getirebileceğini söylemekte.
+
+RNN ALGORİTMASI ÇALIŞMA MANTIĞI VE KULLANIM ALANLARI
+
+RNN (YİNELEMELİ SİNİR AĞLARI)  ALGORİTMASI NEDİR?
+Normal sinir ağlarına göre çok daha sağlıklı ve güvenilir sonuçlar elde etmemizi sağlayan yinelemeli sinir ağlarının amacı hata payını düşürmektir.
+RNN’lerin arkasındaki fikir sıralı bilgi kullanmaktır. Geleneksel bir sinir ağında tüm girdilerin (ve çıktıların) birbirinden bağımsız olduğunu varsayarız. Ancak birçok görev için bu çok kötü bir fikirdir. Bir cümledeki bir sonraki kelimeyi tahmin etmek isterseniz, hangi kelimelerin daha önce geldiğini daha iyi bilirsiniz. RNN’ler tekrar tekrar çağrılır, çünkü bir dizinin her elemanı için aynı görevi yaparlar, çıktı önceki hesaplamalara bağlıdır. RNN’leri düşünmenin başka bir yolu, şimdiye kadar hesaplanmış olan hakkında bilgi toplayan bir “hafıza” ya sahip olmalarıdır. Teoride RNN’ler keyfi uzun sekanslarda bilgi kullanabilirler, ancak pratikte sadece birkaç adım geriye bakmalarıyla sınırlıdırlar. İşte tipik bir RNN:
+ 
+
+Tekrarlayan bir nöral ağ ve hesaplamanın zaman içinde ortaya çıkması, ileri hesaplamada yer alır.
+Yukarıdaki diyagram, tam bir ağa açılmış olan bir RNN’yi (veya açılmamış) göstermektedir. Kaydettiğimizde, tüm dizinin ağını yazdığımız anlamına gelir. Örneğin, umduğumuz sekans 5 kelimelik bir cümle ise, ağ her bir kelime için 5 katmanlı bir sinir ağına, bir katmana açılacaktır. Bir RNN’de hesaplamayı yöneten formüller aşağıdaki gibidir:
+Xt: t adımında girdi. Örneğin, x1, bir cümlenin ikinci kelimesine karşılık gelen tek-sıcak bir vektör olabilir.
+St: t adımında gizli durumdur. Bu, ağın “hafızası”. st önceki gizli duruma ve mevcut adımdaki girdiye göre hesaplanır: st=f(Uxt + Ws{t-1}). F fonksiyonu genellikle tanh veya ReLU gibi doğrusal olmayan bir durumdur. İlk gizli durumu hesaplamak için gereken s{-1} , tipik olarak tüm sıfırlara başlatılır.
+Ot: t adımındaki çıktıdır. Örneğin, bir cümledeki bir sonraki kelimeyi tahmin etmek isteseydik, kelime dağarcığımız boyunca olasılıkların bir vektörü olurdu. Ot ={softmax}(Vst).
+Burada dikkat edilmesi gereken birkaç nokta var:
+Gizli durum st‘yi ağın belleği olarak düşünebilirsiniz. st, önceki zaman adımlarında ne olduğu hakkında bilgi yakalar. ot adımındaki çıktı sadece t zamanında belleğe dayanarak hesaplanır. Yukarıda kısaca bahsedildiği gibi, uygulamada biraz daha karmaşıktır, çünkü st genellikle çok fazla zaman adımından gelen bilgileri yakalayamaz.
+Her katmanda farklı parametreler kullanan geleneksel derin sinir ağından farklı olarak, bir RNN tüm adımlarda aynı parametreleri ( U, V, W yukarısındaki) paylaşır. Bu, her adımda aynı görevi gerçekleştirdiğimiz gerçeğini, sadece farklı girdilerle yansıtır. Bu, öğrenmemiz gereken toplam parametre sayısını büyük ölçüde azaltır.
+Yukarıdaki diyagramın her zaman adımında çıktıları vardır, ancak göreve bağlı olarak bu gerekli olmayabilir. Örneğin, bir cümlenin duygularını kestirirken, her bir kelimeden sonraki duyguları değil, sadece son çıktıyı önemseyebiliriz. Benzer şekilde, her zaman adımında girişlere ihtiyaç duymayabiliriz. Bir RNN’nin ana özelliği, bir dizi hakkında bazı bilgileri toplayan gizli durumudur.
+TARİHÇESİ
+Yinelemeli sinir ağları David Rumelhart'ın 1986 yılındaki çalışmasına dayanır. Hopfield ağı denen özel bir RNN türü de John Hopfield tarafından 1982 yılında geliştirilmiştir. 1993 yılında, bir RNN çalışması 1000'den fazla katman gerektiren bir “çok derin öğrenme” görevini başarmıştır.Long short-term memory (LSTM) ağları Hochreiter ve Schmidhuber tarafından 1997 yılında geliştirilmiş ve çeşitli uygulama alanlarında en iyi performansları kaydetmiştir.
+
+NORMAL SİNİR AĞINDAN FARKI NEDİR?
+Basit bir sinir ağı bir fotoğraf içerisindeki nesneleri tanımak için sadece o anda verilen giriş bilgilerini kullanır. Sisteme daha önce verilen bilgileri kullanmaz. O bilgileri kullanmadan bir tahmin oluşturur. Böylece hedefe gitmek amaçlanır. RNN ise yalnızca o an verilen bilgileri değil, sisteme daha önce tanıtılan bilgileri ve ayrıca sisteme daha sonra yüklenecek bilgileri de kullanır. Böylece bu sinir ağları bir belleğe sahip olan ağlardır. Eski veriler ile yeni verileri karşılaştırarak sonuca ulaşırlar.
+ 
+Temel Bir Sinir Ağı Yapısı
+
+RNN’LERİN KULLANIM ALANLARI VE BAZI UYGULAMA ÖRNEKLERİ
+Yinelemeli sinir ağları, doğal dil işleme, anomali tespiti, kelime ve cümle tahmini, borsa tahmini ,metin ve ses verileri, sınıflandırma problemleri, regresyon problemleri, üretken (generative) gibi modellerde kullanılır.
+Dil Modelleme ve Metin Oluşturma
+Bir kelime dizisi verildiğinde, önceki kelimelerde verilen her bir kelimenin olasılığını tahmin etmek istiyoruz. Dil Modelleri, bir Cümlenin Makine Çevirisi için önemli bir girdi olan(yüksek olasılıklı cümleler genellikle doğru olduğundan) ölçmeyi mümkün kılar. Bir sonraki kelimeyi tahmin etmenin bir yan etkisi, çıktı olasılıklarından örnekleme yaparak yeni bir metin üretmemizi sağlayan bir üretken model elde etmemizdir. Ve eğitim verilerimizin ne olduğuna bağlı olarak her türlü şeyi üretebiliriz. Dil Modellemede, girdimiz tipik olarak bir kelime dizisidir (örneğin, tek-sıcak vektörler olarak kodlanır) ve çıktımız tahmin edilen kelime dizisidir. Ağı eğitirken, bir sonraki kelimeyi çıkarmak istiyoruz.
+Makine Çevirisi
+Makine Çevirisi, kaynak dilimizde (örneğin Almanca) bir dizi kelime girdiğimiz için dil modellemesine benzer. Hedef dilimizde (veya İngilizce) bir kelime dizisi çıkarmak istiyoruz. Temel bir fark, sadece tüm giriş dizisini yakalamamız gerektiğidir, çünkü çevrilmiş cümlenin ilk sözcüğü, tam giriş dizisinden yakalanabilir.
+ 
+
+Konuşma Tanıma
+Ses dalgasından gelen akustik sinyallerin bir giriş dizisi verildiğinde, fonetik bölümlerin bir dizisini olasılıkları ile birlikte tahmin edebiliriz.
+Konvolüsyonel Sinir Ağları ile birlikte, etiketsiz görüntüler için tanımlamalar üretmek amacıyla bir modelin bir parçası olarak RNN’ler kullanılmıştır. Bunun nasıl işe yaradığı oldukça şaşırtıcı. Birleşik model, oluşturulan kelimeleri görüntülerde bulunan özelliklerle bile hizalar.
+ 
+
+AVANTAJLARI:
+1-) Bir önceki örnek ile ilişki kurar. Bu sayede girdiler unutulmadan ilerlenir.
+2-) Kullanım alanı çok geniştir.
+DEZAVANTAJLARI:
+Yinelemeli Sinir Ağları, zaman içerisinde çok farklı tekrar yapabilir. Bu tekrar denemeleri yüzünden veriyle ilişkili olan bazı parametreleri veriyi az etkilediği gerekçesiyle sistemden atabilir. Eğer bu parametreler sinir ağına çok önce eklenmişse artık kullanıcı bu bilgiye ulaşamayabilir. Atılan ve unutulan bu bilgileri bir bellekte toplayabilmek için geliştirilmiş mimariler bulunmaktadır. LSTM bu mimariye örnektir.
+Long-Short Term Memory (LSTM)
+Uzun kısa süreli bellek, (LSTM – Long Short Term Memory) derin öğrenme alanında ve sinir ağlarında kullanılan bir Yinelemeli Sinir Ağı (RNN) mimarisidir. LSTM mimarisinin standart sinir ağlarının aksine geri beslemeli bağlantıları vardır. Geri beslemeli ağlarla birlikte değerleri rastgele zamanlarla hatırlar. Yinelemeli Sinir Ağlarında sıkça kullanılmaktadır. RNN’nin ortaya çıkardığı uzun sürede unutma sorunları gibi problemleri ortadan kaldırır. Bu mimari birçok alanda kullanılır. El yazısı tanıma, konuşma tanıma, anomali tespiti gibi alanlarda sıkça kullanılır.
+ 
+
+LSTM, temel olarak ele alındığında bir hücre, giriş kapısı, bir çıkış kapısı ve bir unut kapısından oluşur. Hücre, değerleri rastgele aralıklarla hatırlar. Üç kapı da hücreye giren bilgi girişini ve çıkışını düzenler.  LSTM zaman serisi analizinde sıkça kullanılır. Çünkü LSTM uzun vadeli bağımlılıkları öğrenme yeteneğine sahiptir. Zaman serisi analizinde ortaya çıkan uzun vadeli bağımlılık sorunlarını ve kaybolan gradyan sorunlarını ele alır. Uzun vadeli unutma sorunları, zaman serisi analizinde bulunan olaylar arasında bilinmeyen süre gecikmeleridir.
+Gated Reccurent Unıt (GRU)
+GRU, yine LSTM gibi Yinelemeli Sinir Ağlarında ortaya çıkan Kaybolan Gradyan Problemini ele alan bir mimaridir. GRU yine LSTM gibi uzun vadeli bağımlılıkları öğrenme yeteneğine sahiptir. GRU unutma kapısına sahiptir fakat LSTM ’den farklı olarak bir çıkış kapısına sahip değildir. Bundan dolayı daha az parametreye sahiptir.
+ 
+GRU, daha az parametreye sahip olduğu için daha küçük ve daha seyrek veri kümelerinde daha iyi performans sergiler. GRU temel olarak iki kapıya sahiptir, sıfırlama ve güncelleme kapısı. Güncelleme kapısı LSTM ’nin giriş ve unut kapısının yaptıklarını yapar. GRU ‘nun aynı zamanda ayrı bir bellek hücresi yoktur.
+Kısaca GRU ve LSTM ‘nin temel amacı, geçmişteki hangi bilgilerin saklanabileceğini ve unutabileceğini belirlemek ve takip etmektir.
+
+
+RNN UZANTILARI
+Yıllar boyunca araştırmacılar vanilya RNN modelinin bazı eksiklikleri ile başa çıkmak için daha gelişmiş RNN tipleri geliştirdiler.
+Çift yönlü RNN’ler, t’deki çıkışın sadece dizideki önceki öğelere değil, aynı zamanda gelecekteki öğelere de bağlı olabileceği fikrine dayanır. Örneğin, bir sıradaki eksik kelimeyi tahmin etmek için hem sol hem de sağ içeriğe bakmak istiyorsunuz. Çift yönlü RNN’ler oldukça basittir. Onlar da birbirinin üzerine yığılmış sadece iki RNN vardır. Daha sonra çıkış, her iki RNN’nin gizli durumuna göre hesaplanır.
+ 
+Derin (Çift Yönlü) RNN’ler, İki Yönlü RNN’lere benzerdir, sadece zaman adımında birden çok katmana sahip olduğumuz içindir. Pratikte bu bize daha yüksek bir öğrenme kapasitesi sağlar (ama aynı zamanda çok fazla eğitim verisine de ihtiyacımız var).
+ 
+LSTM’lerin RNN’lerden temelde farklı bir mimarisi yoktur, ancak gizli durumu hesaplamak için farklı bir işlev kullanırlar. LSTM’lerdeki belleğe hücreler denir ve bunları önceki durum h{t-1} ve geçerli giriş xt girişi olarak alan siyah kutular olarak düşünebilirsiniz. Dahili olarak bu hücreler neyin saklanacağına (ve neyin silineceğine) karar verir. Daha sonra önceki durumu, mevcut belleği ve girişi birleştirir. Bu tür birimlerin uzun vadeli bağımlılıkları yakalamada çok verimli olduğu ortaya çıkıyor.
+ÖZET OLARAK:
+1-) RNN’ler önceki girdileri hatırlar ve her girdi için ilişki kurar.
+2-) Kendi içerisinde dönen bir döngü gibi çalışır.
+3-) Kendi içerisinde de işlemler yapıldığı için, genelde çok derin RNN yapıları kurulmaz
+İLERİ BESLEMELİ AĞLAR (FEEDFORWARD NEURAL NETWORKS)
+İleri beslemeli yapay sinir ağlarında temel olarak 3 çeşit katman (layer) bulunur. Giriş, gizli ve çıkış katmanları sırasıyla yapay sinir ağına giren verileri tutan giriş katmanı, işlemlerin yapıldığı ve istenilen sonuca göre kendisini eğiten gizli katman yada katmanlar ve son olarak çıkış değerlerini gösteren çıkış katmanıdır.
+Bir gizli katmanın kaç seviye olacağı tamamen probleme göre belirlenmektedir. Her katman ve seviyede 1 veya daha çok sayıda sinir hücresi (nöron) bulunabilir.
+Aşağıda örnek bir tek gizli katmanı bulunan ileri beslemeli ağ tasviri bulunmaktadır:
+ 
+
+Yukarıdaki ağda dikkat edilirse bütün sinapsis yönleri (yani verinin akışı) giriş katmanından çıkış katmanına doğrudur.
+Bir ileri beslemeli yapay sinir ağında her katmanda ne kadar sinir hücresi (neuron) olacağına aşağıdaki basit bir iki kurala göre karar verilebilir:
+Öncelikle giriş katmanı için nöron sayısına sistemin girdisi olan verinin sayısına göre kolayca karar verilebilir. Örneğin sistemimizin öğrenmesini ve daha sonra sınıflandırmasını istediğimiz örüntünün (pattern) kaç veri ünitesinden oluştuğuna (örneğin bit) göre giriş katmanındaki sinir hücresi sayısı belirlenebilir.
+Kısaca giriş katmanındaki her sinir hücresi, sonucu etkilemesi istenen bir değişkene karşılık gelmektedir.
+Benzer uygulama çıkış katmanı için de kullanılabilir. Buna göre çıkış bilgisinin nasıl gösterilmesi istendiğine karar verildikten sonra bu çıkışta bulunması istenen her değişken için bir sinir hücresi bulundurulması gerekir.
+Örneğin bir sınıflandırma problemi için çıkış katmanında farklı sınıfların gösterilmesini sağlamaya yeterli miktarda sinir hücresi bulunması yeterlidir. Veya bir filtreleme problemi için giriş ve çıkıştaki nöronların sayısı genelde eşit olur.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+KAYNAKLAR:
+https://tr.wikipedia.org/wiki/Yinelemeli_sinir_a%C4%9F%C4%B1#:~:text=Yinelemeli%20sinir%20a%C4%9Flar%C4%B1%20David%20Rumelhart,%C3%A7ok%20derin%20%C3%B6%C4%9Frenme%E2%80%9D%20g%C3%B6revini%20ba%C5%9Farm%C4%B1%C5%9Ft%C4%B1r.
+https://www.elektrikport.com/makale-detay/yinelemeli-sinir-aglari-(rnn)-nedir/23277#ad-image-0
+https://medium.com/deep-learning-turkiye/rnn-nedir-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-9e5d572689e1
+https://devhunteryz.wordpress.com/2018/07/09/tekrarlayan-sinir-aglari-egitimi-bolum-1-rnnlere-giris/
+https://dergipark.org.tr/tr/download/article-file/394923
+https://tr.newworldai.com/wp-content/uploads/2017/09/Yapay-Sinir-a%C4%9Flar%C4%B1-ve-klinik-ara%C5%9Ft%C4%B1rmalarda-kullan%C4%B1m%C4%B1.pdf
+https://polen.itu.edu.tr:8443/server/api/core/bitstreams/d176b090-2b62-45a0-9240-27fa5be314b7/content
+https://dergipark.org.tr/tr/download/article-file/596690
+https://tr.wikipedia.org/wiki/Perceptron
+https://www.derinogrenme.com/2017/03/04/yapay-sinir-aglari/
+https://web.archive.org/web/20190213170735/https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975
+https://devhunteryz.wordpress.com/2018/05/03/yapay-sinir-aglari-ve-derin-ogrenme/
+https://devhunteryz.wordpress.com/2018/06/
+https://www.gtech.com.tr/yapay-sinir-aglari-ve-uygulamalari-1/
+https://www.veribilimiokulu.com/yapay-sinir-aglari/
+http://musaatas.siirt.edu.tr/ANN/YSA_Giris.pdf
+
+
+
+
+
+
+
+
+
